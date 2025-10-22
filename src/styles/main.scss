@@ -1,0 +1,111 @@
+$primary: #3b82f6;
+$bg: #f9fafb;
+$text: #1f2937;
+$border: #e5e7eb;
+$danger: #ef4444;
+$radius: 8px;
+
+
+body {
+background: $bg;
+color: $text;
+font-family: 'Inter', system-ui, sans-serif;
+}
+
+
+.nav {
+background: $primary;
+color: #fff;
+padding: 1rem;
+.nav-inner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+a { color: #fff; text-decoration: none; font-weight: 600; }
+button { background: none; border: none; color: #fff; cursor: pointer; }
+}
+}
+
+.comment-card {
+    background: #fff;
+    border: 1px solid $border;
+    border-radius: $radius;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: box-shadow .2s;
+    &:hover { box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .timestamp { color: $border; margin-left: .5rem; font-size: .9rem; }
+    .comment-actions { margin-top: .5rem; button { margin-right: .5rem; border: none; background: transparent; cursor: pointer; }
+    .danger { color: $danger; }
+    }
+    }
+    .comment-form {
+        margin-bottom: 1rem;
+        textarea {
+        width: 100%;
+        border: 1px solid $border;
+        border-radius: $radius;
+        padding: .5rem;
+        resize: vertical;
+        min-height: 70px;
+        }
+        button {
+        margin-top: .5rem;
+        background: $primary;
+        color: white;
+        border: none;
+        padding: .4rem .8rem;
+        border-radius: $radius;
+        cursor: pointer;
+        }
+        }
+    
+    .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+    button {
+    background: $primary;
+    color: white;
+    border: none;
+    padding: .4rem .8rem;
+    border-radius: $radius;
+    margin: 0 .25rem;
+    }
+    }
+    
+    
+    .sorting {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    select {
+    margin-left: .5rem;
+    border-radius: $radius;
+    border: 1px solid $border;
+    padding: .3rem .5rem;
+    }
+    }
+    
+    
+    .confirm-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .confirm-box {
+    background: white;
+    border-radius: $radius;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    .actions { margin-top: 1rem; button { margin: 0 .5rem; padding: .4rem 1rem; border-radius: $radius; border: none; cursor: pointer; }
+    .btn-primary { background: $primary; color: white; }
+    .btn-secondary { background: $border; color: $text; }
+    }
+    }
