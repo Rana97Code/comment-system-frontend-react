@@ -26,10 +26,10 @@ onDone && onDone();
 return (
 <form className="comment-form" onSubmit={submit}>
 {error && <div className="error">{error}</div>}
-<textarea value={text} onChange={e=>setText(e.target.value)} placeholder={parentId ? 'Write a reply...' : 'Write a comment...'} />
-<div className="form-actions">
-<button type="button" onClick={submit}>Send</button>
-</div>
+    <textarea value={text} onChange={e=>setText(e.target.value)} placeholder={parentId ? 'Write a reply...' : 'Write a comment...'} />
+    <div className="form-actions">
+    <button type="button" onClick={submit}>Post</button>
+    </div>
 </form>
 );
 }

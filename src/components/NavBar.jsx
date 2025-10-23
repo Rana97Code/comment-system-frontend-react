@@ -5,10 +5,11 @@ import { useAuth } from '../contexts/AuthContext';
 
 export default function NavBar(){
 const { user, logout } = useAuth();
+
 return (
 <nav className="nav">
 <div className="nav-inner container">
-<Link to="/" className="logo">Comments</Link>
+<Link to="/" className="logo">Home</Link>
 <div className="nav-links">
 {user ? (
 <>

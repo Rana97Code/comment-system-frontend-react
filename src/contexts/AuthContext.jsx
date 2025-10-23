@@ -11,11 +11,14 @@ const [loading, setLoading] = useState(true);
 
 
 useEffect(() => {
-// attempt to fetch current user on load
 (async () => {
 try {
-const res = await api.get(`${process.env.REACT_APP_API_URL}/auth/me`);
-setUser(res.data.user);
+const me = await api.get(`${process.env.REACT_APP_API_URL}/auth/me`, {
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
+  },
+});
+setUser(me.data);
 } catch (err) {
 setUser(null);
 } finally { setLoading(false); }
@@ -28,8 +31,12 @@ const res = await api.post(`${process.env.REACT_APP_API_URL}/auth/login`, creden
 const token = res.data.token;
 localStorage.setItem('token', token);
 // fetch user
-const me = await api.get(`${process.env.REACT_APP_API_URL}/auth/me`);
-setUser(me.data.user);
+const me = await api.get(`${process.env.REACT_APP_API_URL}/auth/me`, {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
+setUser(me.data);
 };
 
 const register = async ({ name, email, password }) => {

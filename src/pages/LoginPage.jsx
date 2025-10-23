@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/LoginPage.scss';
 
 
@@ -10,6 +10,7 @@ const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const [error, setError] = useState('');
 const [loading, setLoading] = useState(false);
+const navigate = useNavigate();
 
 
 const handleSubmit = async (e) => {
@@ -17,7 +18,8 @@ e.preventDefault();
 setError('');
 setLoading(true);
 try {
-await login(email, password);
+await login({email, password});
+navigate('/');
 } catch (err) {
 setError('Invalid email or password');
 } finally {

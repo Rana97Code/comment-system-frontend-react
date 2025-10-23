@@ -7,8 +7,8 @@ import Pagination from '../components/Pagination';
 export default function HomePage(){
 return (
 <div className="page home">
-<h1>Comments</h1>
-<Sorting />
+<h1>Write your Comment</h1>
+{/* <Sorting /> */}
 <CommentList />
 <Pagination />
 </div>
