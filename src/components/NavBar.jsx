@@ -10,6 +10,17 @@ return (
 <nav className="nav">
 <div className="nav-inner container">
 <Link to="/" className="logo">Home</Link>
+{user?.role === "admin" && (
+  <Link to="/admin/authorize">Authorize Users</Link>
+)}
+
+{user?.role === "admin" && (
+<Link to="/content/add" className="logo">Add Content</Link>
+)}
+{user?.role === "admin" && (
+<Link to="/content/list" className="logo">Content List</Link>
+)}
+
 <div className="nav-links">
 {user ? (
 <>
