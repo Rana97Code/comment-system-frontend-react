@@ -1,0 +1,149 @@
+.content-list-page {
+  padding: 3rem;
+  background: #f9fafc;
+
+  .page-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #222;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .content-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1rem;
+
+      h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      p {
+        color: #666;
+        font-size: 0.95rem;
+      }
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-around;
+      padding: 0.75rem 0;
+      background: #f1f1f1;
+      font-size: 0.9rem;
+    }
+  }
+
+  .pagination {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #4a90e2;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+
+      &:hover:not(:disabled) {
+        background: #357ac9;
+      }
+    }
+  }
+}
+
+.content-detail-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  .content-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    .content-meta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+
+      button {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: transform 0.2s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        &.active {
+          color: #e63946;
+        }
+
+        &.dislike-btn.active {
+          color: #1d3557;
+        }
+      }
+    }
+  }
+
+  .content-image {
+    width: 100%;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+
+  .content-body {
+    line-height: 1.6;
+  }
+
+  .comments-section {
+    margin-top: 2rem;
+  }
+}

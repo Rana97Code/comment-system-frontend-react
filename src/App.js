@@ -8,6 +8,7 @@ import RegisterPage from './pages/RegisterPage';
 import ContentAdd from './components/ContentAdd';
 import ContentList from './pages/ContentList';
 import AdminAuthorize from './pages/AdminAuthorize';
+import ContentDetailPage from './pages/ContentDetailPage';
 export default function App(){
 return (
 <div className="app-root">
@@ -21,6 +22,7 @@ return (
 <Route path="/content/add" element={<ContentAdd />} />
 <Route path="/content/list" element={<ContentList />} />
 <Route path="/admin/authorize" element={<AdminAuthorize />} />
+<Route path="/content/:id" element={<ContentDetailPage />} />
 </Routes>
 </main>
 </div>

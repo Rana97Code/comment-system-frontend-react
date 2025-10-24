@@ -16,7 +16,7 @@ export default function ContentPage() {
   }, [id]);
 
   if (!content) return <p>Loading...</p>;
-
+  console.log("content",content);
   return (
     <div className="content-page">
       <div className="content-view">

@@ -43,7 +43,16 @@ export default function ContentList() {
 
         {contents.map((item) => (
           <div key={item._id} className="content-card">
-            {item.image && <img src={item.image} alt={item.title} />}
+            {item.image && <img
+                src={`http://localhost:4000${item.image}`}
+                alt={item.title}
+                style={{ width: "auto", height: "300px" }}
+                onError={(e) => {
+                  console.error("Image failed to load:", e.target.src);
+                  e.target.style.display = "none";
+                }}
+              />
+              }
             <div className="info">
               <h3>{item.title}</h3>
               <p>{item.body?.slice(0, 120)}...</p>

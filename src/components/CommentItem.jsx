@@ -6,7 +6,7 @@ import { useComments } from '../contexts/CommentsContext';
 import ReplyList from './ReplyList';
 import CommentForm from './CommentForm';
 import ConfirmModal from './ConfirmModal';
-import LoginRequiredModal from './LoginRequiredModal'; // ✅ Import the modal
+import LoginRequiredModal from './LoginRequiredModal'; 
 
 export default function CommentItem({ comment }) {
   const { user } = useAuth();
@@ -21,10 +21,17 @@ export default function CommentItem({ comment }) {
   const isOwner = user && comment.authorId === user._id;
 
   const handleDelete = () => setShowConfirm(true);
+
   const confirmDelete = async () => {
+  try {
     await deleteComment(comment._id);
     setShowConfirm(false);
-  };
+  } catch (error) {
+    console.error("Delete failed:", error);
+    alert("You don't have authority to delete this comment.");
+  }
+};
+
 
   // ✅ Helper function for login check
   const requireLogin = () => {
@@ -106,7 +113,8 @@ export default function CommentItem({ comment }) {
 
       {/* ✅ Reply form */}
       {showReply && (
-        <CommentForm parentId={comment._id} onDone={() => setShowReply(false)} />
+        <CommentForm  parentId={comment._id}  contentId={comment.contentId} 
+         onDone={() => setShowReply(false)}/>
       )}
 
       {/* ✅ Replies list */}

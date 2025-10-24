@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import api from "../api/fetcher";
 import "../styles/adminAuthorize.scss";
@@ -9,11 +9,8 @@ export default function AdminAuthorize() {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    if (user?.role === "admin") fetchUsers();
-  }, [user]);
-
-  const fetchUsers = async () => {
+  // Wrap fetchUsers in useCallback to avoid recreating it every render
+  const fetchUsers = useCallback(async () => {
     try {
       setLoading(true);
       const res = await api.get("/auth/users", {
@@ -25,7 +22,12 @@ export default function AdminAuthorize() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
+
+  // Now we can safely use fetchUsers in useEffect
+  useEffect(() => {
+    if (user?.role === "admin") fetchUsers();
+  }, [user, fetchUsers]);
 
   const handleAuthorize = async (userId) => {
     try {

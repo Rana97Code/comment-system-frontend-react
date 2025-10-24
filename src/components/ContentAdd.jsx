@@ -22,31 +22,34 @@ export default function ContentAdd({ onAdded }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    try {
-      const formData = new FormData();
-      Object.entries(form).forEach(([key, val]) => formData.append(key, val));
+  e.preventDefault();
+  setLoading(true);
+  setError("");
+  try {
+    const formData = new FormData();
+    Object.entries(form).forEach(([key, val]) => formData.append(key, val));
 
-      await api.post("/contents", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      onAdded?.();
-      setForm({ title: "", slug: "", body: "", image: null });
-    } catch (err) {
-      setError(err.response?.data?.message || "Error creating content");
-    } finally {
-      setLoading(false);
-    }
-  };
+    await api.post("/contents", formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    onAdded?.();
+    setForm({ title: "", slug: "", body: "", image: null });
+
+    alert("Page added successfully!");
+  } catch (err) {
+    setError(err.response?.data?.message || "Error creating content");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="content-form-container">
-      <h2>Create New Content</h2>
+      <h2>Create New Page</h2>
       {error && <p className="error">{error}</p>}
 
       <form onSubmit={handleSubmit} className="content-form">

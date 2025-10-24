@@ -1,0 +1,74 @@
+// Variables
+$primary-color: #2575fc;
+$secondary-color: #6a11cb;
+$card-bg: #fff;
+$text-color: #333;
+$text-secondary: #777;
+$shadow-color: rgba(0,0,0,0.2);
+$font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: linear-gradient(135deg, $secondary-color 0%, $primary-color 100%);
+  font-family: $font-family;
+
+  .profile-card {
+    background: $card-bg;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 10px 25px $shadow-color;
+    text-align: center;
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1rem auto;
+      background: $primary-color;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px $shadow-color;
+    }
+
+    .user-name {
+      margin: 0.5rem 0;
+      font-size: 1.5rem;
+      color: $text-color;
+    }
+
+    .user-role {
+      margin-bottom: 1.5rem;
+      color: $text-secondary;
+      font-style: italic;
+    }
+
+    .user-info {
+      text-align: left;
+      border-top: 1px solid lighten($text-color, 70%);
+      padding-top: 1rem;
+
+      .info-item {
+        margin-bottom: 0.8rem;
+
+        .label {
+          font-weight: bold;
+          color: darken($text-secondary, 10%);
+        }
+
+        .value {
+          margin-left: 0.5rem;
+          color: $text-color;
+          word-break: break-all;
+        }
+      }
+    }
+  }
+}
